@@ -21,12 +21,12 @@ int ultrasonic(int trigPin, int echoPin) {
 }
 void setup() {
   // put your setup code here, to run once:
-  //0-1 is NS sensor
   //2-3 is EW sensor
   //4 is NS switch
   //5 is EW *    *
   //6-8=NS red-green
   //9-11=EW red-green
+  //12-13=NS sensor
   pinMode(4, INPUT);
   pinMode(5, INPUT);
   pinMode(6, OUTPUT);
@@ -52,7 +52,7 @@ void loop() {
     Serial.println("Using mode 1, Normal");
     int NoSo = digitalRead(4);
     int EaWe = digitalRead(5);
-    if (NoSo == LOW || ultrasonic(0, 1) <= 10) {
+    if (NoSo == LOW || ultrasonic(12, 13) <= 10) {
       digitalWrite(11, LOW);
       if (digitalRead(9) == LOW) {
         digitalWrite(10, HIGH);
